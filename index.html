@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 3D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 200px;
+			height: 200px;
+			text-align:center;
+			line-height:200px;
+			margin:100px auto;
+			position:relative;
+			/* text-align: center;
+			line-height: 200px;
+			font-size: 24px;
+			margin: 100px auto;
+			position: relative;
+			transform: rotateY(30deg) rotateX(-30deg);
+			transform-style: preserve-3d; */
+			 /*perspective:1000px; */
+			transform-style:preserve-3d;
+			-webkit-animation: box 1s linear forwards,boxAn 3s linear 3s forwards;
+			/*transform:rotateX(0deg) rotateY(0deg);*/
+			
+		}
+		.box:hover {
+			/*-webkit-animation:boxAn 4s linear forwards;*/
+		}
+
+		@-webkit-keyframes box {
+			0% {
+				transform:rotateX(0deg) rotateY(0deg);
+			}
+			100% {
+				transform:rotateX(-30deg) rotateY(30deg);
+			}
+		}
+
+		@-webkit-keyframes boxAn {
+			0% {
+				transform:rotateX(-30deg) rotateY(30deg) rotateZ(0);
+			}
+			33% {
+				transform:rotateX(330deg) rotateY(30deg) rotateZ(0);
+			}
+			66% {
+				transform:rotateX(330deg) rotateY(-330deg) rotateZ(0);
+			}
+			100% {
+				transform:rotateX(330deg) rotateY(-330deg) rotateZ(360deg);
+			}
+
+		}
+
+		.front, .back, .left, .right, .top, .bottom {
+			/* width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0.5; */
+
+			width: 200px;
+			height: 200px;
+			position:absolute;
+			top: 0;
+			left:0;
+			opacity:0.8;
+		}
+
+		.front {
+			background-color: pink;
+			/*transition: all 1s linear;
+			transform:rotateX(-30deg) rotateY(30deg) translateZ(100px);*/
+			-webkit-animation: front 1s linear .5s forwards;
+			
+		}
+		@-webkit-keyframes front {
+			0% {
+				transform:translateZ(0);
+			}
+			100% {
+				transform:translateZ(100px);
+			}
+		}
+
+		.back {
+			background-color: blue;
+			/*transform:translateZ(-100px);*/
+			-webkit-animation: back 1s linear 1s forwards;
+			
+		}
+
+		@-webkit-keyframes back {
+			0% {
+				transform:translateZ(0);
+			}
+			100% {
+				transform:translateZ(-100px);
+			}
+		}
+
+		.left {
+			background-color: green;
+			-webkit-animation: left 1s linear 1.5s forwards;			
+			/*transform:rotateY(90deg) translateZ(-100px);*/		
+		}
+
+		@-webkit-keyframes left {
+			0% {
+				transform:rotateY(0deg) translateZ(0);
+			}
+			100% {
+				transform:rotateY(-90deg) translateZ(100px);
+			}
+		}
+
+		.right {
+			background-color: yellow;
+			-webkit-animation: right 1s linear 2s forwards;			
+			/*transform:rotateY(-90deg) translateZ(-100px);*/
+			
+		}
+
+		@-webkit-keyframes right {
+			0% {
+				transform:rotateY(0deg) translateZ(0);
+			}
+			100% {
+				transform:rotateY(-90deg) translateZ(-100px);
+			}
+		}
+
+		.top {
+			background-color: red;
+			-webkit-animation: top 1s linear 2.5s forwards;
+			/*transform:rotateX(90deg) translateZ(-100px);*/
+		
+		}
+
+		@-webkit-keyframes top {
+			0% {
+				transform:rotateX(0deg) translateZ(0);
+			}
+			100% {
+				transform:rotateX(90deg) translateZ(100px);
+			}
+		}
+
+		.bottom {
+			background-color: orange;
+			-webkit-animation: bottom 1s linear 3s forwards;
+			/*transform:rotateX(-90deg) translateZ(-100px);*/
+			
+		}
+
+		@-webkit-keyframes bottom {
+			0% {
+				transform:rotateX(0deg) translateZ(0);
+			}
+			100% {
+				transform:rotateX(-90deg) translateZ(100px);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="front">front</div>
+		<div class="back">back</div>
+		<div class="left">left</div>
+		<div class="right">right</div>
+		<div class="top">top</div>
+		<div class="bottom">bottom</div>
+	</div>
+</body>
+</html>
